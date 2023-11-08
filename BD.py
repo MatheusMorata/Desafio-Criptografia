@@ -40,17 +40,18 @@ def Update(id, userDocument, creditCardToken, value):
     conexao.close()
 
 def Read():
-    json = []
+    json = {"dados":"nda"}
+    lista = []
     sql = "SELECT * FROM creditCard"
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
     cursor = conexao.cursor()
     cursor.execute(sql)
     resultado = cursor.fetchall()
     for i in range(0,len(resultado)):
-        json.append({"id":resultado[i][0], "userDocument": resultado[i][1], "creditCardToken": resultado[i][2], "value":resultado[i][3]})
-
-    print(json)
+        lista.append({"id":resultado[i][0], "userDocument": resultado[i][1], "creditCardToken": resultado[i][2], "value":resultado[i][3]})
+    json["dados"] = lista
     conexao.close()
+    return json
     
 def Delete(id):
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
