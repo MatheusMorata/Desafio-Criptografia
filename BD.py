@@ -21,3 +21,18 @@ def Create(id, userDocument, creditCardToken, value):
     conexao.commit()
     conexao.close()
 
+
+#def Update(id, userDocument, creditCardToken, value):
+
+
+def Read():
+    resultado_dicionario = {}
+    sql = "SELECT * FROM creditCard"
+    cursor = conexao.cursor()
+    cursor.execute(sql) 
+    resultado = cursor.fetchall
+    return resultado
+    
+    
+#def Delete(id):
+
