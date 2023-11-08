@@ -13,10 +13,10 @@ def Read():
 
 @app.route("/update", methods=['PUT'])
 def Update():
-    return "Recebi um PUT"
+    return "" 
 
 @app.route("/delete", methods=['DELETE'])
 def Delete():
-    return "Recebi um DELETE"
+    return ""
 
 app.run()
