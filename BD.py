@@ -61,6 +61,3 @@ def Delete(id):
     cursor.execute(sql,id_tupla)
     conexao.commit()
     conexao.close()
-
-
-Read()
