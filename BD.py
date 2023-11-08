@@ -22,6 +22,8 @@ def Create(id, userDocument, creditCardToken, value):
 
 
 def Update(id, userDocument, creditCardToken, value):
+    userDocument = str(userDocument)
+    creditCardToken = str(creditCardToken)
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
     cursor = conexao.cursor()
     sql = "UPDATE creditCard SET userDocument = %s, creditCardToken = %s, value = %s WHERE id = %s"
@@ -40,7 +42,7 @@ def Update(id, userDocument, creditCardToken, value):
     conexao.close()
 
 def Read():
-    json = {"dados":"nda"}
+    json = {"dados":""}
     lista = []
     sql = "SELECT * FROM creditCard"
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
