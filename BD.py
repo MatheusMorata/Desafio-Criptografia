@@ -1,9 +1,10 @@
 import mysql.connector as mysql
 import hashlib
 
-conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
 
 def Create(id, userDocument, creditCardToken, value):
+    conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
+
     sql = "INSERT INTO creditCard(id, userDocument, creditCardToken, value) VALUES (%s,%s,%s,%s)"
     cursor = conexao.cursor()
     
@@ -25,14 +26,17 @@ def Create(id, userDocument, creditCardToken, value):
 #def Update(id, userDocument, creditCardToken, value):
 
 
-def Read():
-    resultado_dicionario = {}
-    sql = "SELECT * FROM creditCard"
+#def Read():
+   
+    
+    
+def Delete(id):
+    conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
+    id_tupla = (id,)
+    sql = "DELETE FROM creditCard WHERE id = %s"
     cursor = conexao.cursor()
-    cursor.execute(sql) 
-    resultado = cursor.fetchall
-    return resultado
-    
-    
-#def Delete(id):
+    cursor.execute(sql,id_tupla)
+    conexao.commit()
+    conexao.close()
+
 
