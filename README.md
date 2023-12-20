@@ -27,7 +27,7 @@ CREATE TABLE creditCard(
 ### POST /create
 
 
-<script>
+<pre>
 
     {
         "id": 90,
@@ -36,7 +36,7 @@ CREATE TABLE creditCard(
         "Value": 100000
     }
 
-</script>
+</pre>
 
 
 ### GET /read
@@ -52,7 +52,7 @@ CREATE TABLE creditCard(
 ### POST /update/<int:id>
 
 
-<script>
+<pre>
 
     {
         "id": 90,
@@ -61,14 +61,14 @@ CREATE TABLE creditCard(
         "Value": 100000
     }
 
-</script>
+</pre>
 
 
 ### GET /delete/<int:id>
 
 
-<script>
+<pre>
 
     Sem payload
 
-</script>
+</pre>
