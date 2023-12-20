@@ -16,6 +16,7 @@ def hash(hash):
     return resultado
 
 def Create(json):
+    # Função que realiza um INSERT no banco
     conexao = mysql.connect(host="127.0.0.1",user="root",password="",database="desafio")
     sql = "INSERT INTO creditCard(id, userDocument, creditCardToken, value) VALUES (%s,%s,%s,%s)"
     cursor = conexao.cursor()
@@ -36,7 +37,7 @@ def Create(json):
 
     return Read()
 def Update(id,json):
-
+    # Função que realiza um UPDATE no banco
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
     cursor = conexao.cursor()
     sql = "UPDATE creditCard SET id = %s, userDocument = %s, creditCardToken = %s, value = %s WHERE id = %s"
@@ -55,7 +56,7 @@ def Update(id,json):
         cursor.close()
         conexao.close()
     return Read()
-    
+
 def Read():
     # Função que realiza o SELECT dentro do banco
     saida = []
@@ -89,7 +90,7 @@ def Read():
     return json.dumps(saida, indent=len(saida))
 
 def Delete(id):
-    # Função que deleta apenas um dado no banco
+    # Função que realiza o DELETE dentro do banco
     tupla = (id,)
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
     sql = "DELETE FROM creditCard WHERE id = %s"
