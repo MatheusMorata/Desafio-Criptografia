@@ -6,17 +6,17 @@
 ### Banco de Dados
 
 <p>
-SGBD usado: MySQL
-Nome do Banco: Desafio
-Tabela usada:
-CREATE TABLE creditCard(id INTEGER NOT NULL, userDocument VARCHAR(255) NOT NULL, creditCardToken VARCHAR(255) NOT NULL, Value INTEGER NOT NULL)
+SGBD usado: MySQL<br>
+Nome do Banco: Desafio<br>
+Tabela usada:<br>
+CREATE TABLE creditCard(id INTEGER NOT NULL, userDocument VARCHAR(255) NOT NULL, creditCardToken VARCHAR(255) NOT NULL, Value INTEGER NOT NULL)<br>
 </p>
 
 ### Endpoints
 
 Exemplos:
 <hr>
-
+<p>
 - CREATE
 ENDPOINT: http://localhost:5000/create
 METHOD: POST
@@ -48,3 +48,4 @@ JSON:
 - DELETE
 ENDPOINT: http://localhost:5000/delete/<INT>
 METHOD: GET
+</p>
