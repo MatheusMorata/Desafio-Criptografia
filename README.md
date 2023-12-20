@@ -42,11 +42,11 @@ CREATE TABLE creditCard(
 ### GET /read
 
 
-<script>
+<pre>
 
     Sem payload
 
-</script>
+</pre>
 
 
 ### POST /update/<int:id>
@@ -70,5 +70,5 @@ CREATE TABLE creditCard(
 <script>
 
     Sem payload
-    
+
 </script>
