@@ -1,33 +1,30 @@
-from flask import Flask,request,make_response,jsonify
+from flask import Flask,request
 import BD
 
 app = Flask(__name__)
 
-#Endpoint para criar um campo
+# Endpoint para inserir dados no banco
 @app.route("/create", methods=['POST'])
 def Create():
+    # JSON do usuário
     JSON = request.json
-    BD.Create(JSON['id'],JSON['userDocument'],JSON['creditCardToken'],JSON['value'])
-    return make_response(jsonify(BD.Read())) 
+    return BD.Create(JSON)
 
-#Endpoint para ler todos os campos
+# Endpoint para ler todos os campos
 @app.route("/read", methods=['GET'])
 def Read():
-    return make_response(jsonify(BD.Read())) 
+    return BD.Read()
 
-#Endpoint para atualizar um campo
-@app.route("/update", methods=['POST'])
-def Update():
+# Endpoint para atualizar os dados no banco
+@app.route("/update/<int:id>", methods=['POST'])
+def Update(id):
+    # JSON do usuário
     JSON = request.json
-    BD.Update(JSON["userDocument"], JSON["creditCardToken"], JSON["value"], JSON["id"])
-    return make_response(jsonify(BD.Read())) 
+    return BD.Update(id,JSON)
 
-
-#Endpoint para deletar um campo
+# Endpoint para deletar os dados no banco
 @app.route("/delete/<int:id>", methods=['GET'])
 def Delete(id):
-    BD.Delete(id)
-    return make_response(jsonify(BD.Read())) 
-    
+    return BD.Delete(id)
 
 app.run()

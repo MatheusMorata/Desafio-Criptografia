@@ -1,65 +1,109 @@
 import mysql.connector as mysql
+import json
 import hashlib
 
 
-def Create(id, userDocument, creditCardToken, value):
-    conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
+def hash(hash):
+    # Criar um objeto hash SHA-512
+    sha512 = hashlib.sha512()
+
+    # Atualizar o hash com a string convertida para bytes
+    sha512.update(hash.encode('utf-8'))
+
+    # Obter o hash resultante em formato hexadecimal
+    resultado = sha512.hexdigest()
+
+    return resultado
+
+def Create(json):
+    conexao = mysql.connect(host="127.0.0.1",user="root",password="",database="desafio")
     sql = "INSERT INTO creditCard(id, userDocument, creditCardToken, value) VALUES (%s,%s,%s,%s)"
     cursor = conexao.cursor()
-    
-    #Aqui são criadas as hashes
-    hash = hashlib.sha512()
-    hash1 = hashlib.sha512()
-    hash.update(userDocument.encode('utf-8'))
-    hash1.update(creditCardToken.encode('utf-8'))
-    userDocument = hash.hexdigest()
-    creditCardToken = hash1.hexdigest() 
+    tupla = (json["id"],hash(json["userDocument"]),hash(json["creditCardToken"]),json["Value"])
 
-    valores = (id,userDocument,creditCardToken,value)
-    cursor.execute(sql,valores)
-    conexao.commit()
-    conexao.close()
+    try:
+        # Executar a consulta
+        cursor.execute(sql,tupla)
+        conexao.commit()
 
+    except mysql.Error as erro:
+        print(f"Erro ao executar a consulta: {erro}")
 
-def Update(id, userDocument, creditCardToken, value):
-    userDocument = str(userDocument)
-    creditCardToken = str(creditCardToken)
+    finally:
+        # Fechar o cursor e a conexão
+        cursor.close()
+        conexao.close()
+
+    return Read()
+def Update(id,json):
+
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
     cursor = conexao.cursor()
-    sql = "UPDATE creditCard SET userDocument = %s, creditCardToken = %s, value = %s WHERE id = %s"
+    sql = "UPDATE creditCard SET id = %s, userDocument = %s, creditCardToken = %s, value = %s WHERE id = %s"
+    tupla = (json["id"], hash(json["userDocument"]), hash(json["creditCardToken"]), json["Value"], id)
+    
+    try:
+        # Executar a consulta
+        cursor.execute(sql,tupla)
+        conexao.commit()
 
-    #Aqui são criadas as hashes
-    hash = hashlib.sha512()
-    hash1 = hashlib.sha512()
-    hash.update(userDocument.encode('utf-8'))
-    hash1.update(creditCardToken.encode('utf-8'))
-    userDocument = hash.hexdigest()
-    creditCardToken = hash1.hexdigest() 
+    except mysql.Error as erro:
+        print(f"Erro ao executar a consulta: {erro}")
 
-    valores = (userDocument,creditCardToken,value,id)
-    cursor.execute(sql,valores)
-    conexao.commit()
-    conexao.close()
-
+    finally:
+        # Fechar o cursor e a conexão
+        cursor.close()
+        conexao.close()
+    return Read()
+    
 def Read():
-    json = {"dados":""}
-    lista = []
+    # Função que realiza o SELECT dentro do banco
+    saida = []
     sql = "SELECT * FROM creditCard"
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
     cursor = conexao.cursor()
-    cursor.execute(sql)
-    resultado = cursor.fetchall()
-    for i in range(0,len(resultado)):
-        lista.append({"id":resultado[i][0], "userDocument": resultado[i][1], "creditCardToken": resultado[i][2], "value":resultado[i][3]})
-    json["dados"] = lista
-    conexao.close()
-    return json
-    
+
+    try:
+        # Executar a consulta
+        cursor.execute(sql)
+
+        # Recuperar os resultados
+        resultados = cursor.fetchall()
+
+    except mysql.Error as erro:
+        print(f"Erro ao executar a consulta: {erro}")
+
+    finally:
+        # Fechar o cursor e a conexão
+        cursor.close()
+        conexao.close()
+
+    for i in range(0,len(resultados)):
+        teste = {"id":resultados[i][0],
+                 "userDocument":resultados[i][1],
+                 "creditCardToken":resultados[i][2],
+                 "Value":resultados[i][3]}
+        saida.append(teste)
+        teste = {} 
+
+    return json.dumps(saida, indent=len(saida))
+
 def Delete(id):
+    # Função que deleta apenas um dado no banco
+    tupla = (id,)
     conexao = mysql.connect(host="localhost",user="root",password="",database="Desafio")
-    id_tupla = (id,)
     sql = "DELETE FROM creditCard WHERE id = %s"
     cursor = conexao.cursor()
-    cursor.execute(sql,id_tupla)
-    conexao.commit()
-    conexao.close()
+
+    try:
+        # Executar a consulta
+        cursor.execute(sql,tupla)
+        conexao.commit()
+    except mysql.Error as erro:
+        print(f"Erro ao executar a consulta: {erro}")
+
+    finally:
+        # Fechar o cursor e a conexão
+        cursor.close()
+        conexao.close()
+    return Read()
