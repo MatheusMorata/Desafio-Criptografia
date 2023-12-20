@@ -1,2 +1,50 @@
 # Desafio criptografia
-<p>Desenvolvi esse projeto para esse desafio: https://github.com/backend-br/desafios/blob/master/cryptography/PROBLEM.md</p>
+
+## Objetivo 
+<p>Desenvolver uma API que solucionasse o desafio: https://github.com/backend-br/desafios/blob/master/cryptography/PROBLEM.md</p>
+
+### Banco de Dados
+
+<p>
+SGBD usado: MySQL
+Nome do Banco: Desafio
+Tabela usada:
+CREATE TABLE creditCard(id INTEGER NOT NULL, userDocument VARCHAR(255) NOT NULL, creditCardToken VARCHAR(255) NOT NULL, Value INTEGER NOT NULL)
+</p>
+
+### Endpoints
+
+Exemplos:
+<hr>
+
+- CREATE
+ENDPOINT: http://localhost:5000/create
+METHOD: POST
+JSON:
+{
+    "id": <INT>
+    "userDocument": "<STRING>"
+    "creditCardToken": "<STRING>"
+    "Value": <INT>
+}
+
+- READ
+ENDPOINT: http://localhost:5000/read
+METHOD: GET
+
+
+
+- UPDATE
+ENDPOINT: http://localhost:5000/update/<INT_ANTIGO>
+METHOD: POST
+JSON:
+{
+    "id": <INT_NOVO_VALOR>
+    "userDocument": "<STRING_NOVO_VALOR>"
+    "creditCardToken": "<STRING_NOVO_VALOR>"
+    "Value": <INT_NOVO_VALOR>
+}
+
+- DELETE
+ENDPOINT: http://localhost:5000/delete/<INT>
+METHOD: GET
