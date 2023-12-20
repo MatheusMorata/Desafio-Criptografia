@@ -23,10 +23,10 @@ ENDPOINT: http://localhost:5000/create<br>
 METHOD: POST<br>
 JSON:<br>
 {<br>
-    "id": <INT><br>
-    "userDocument": "<STRING>"<br>
-    "creditCardToken": "<STRING>"<br>
-    "Value": <INT><br>
+    "id": Valor<br>
+    "userDocument": "Valor"<br>
+    "creditCardToken": "Valor"<br>
+    "Value": Valor<br>
 }<br>
 
 <br>
@@ -38,18 +38,18 @@ METHOD: GET<br>
 <br>
 
 - UPDATE<br>
-ENDPOINT: http://localhost:5000/update/<INT_ANTIGO><br>
+ENDPOINT: http://localhost:5000/update/valor<br>
 METHOD: POST<br>
 JSON:<br>
 {<br>
-    "id": <INT_NOVO_VALOR><br>
-    "userDocument": "<STRING_NOVO_VALOR>"<br>
-    "creditCardToken": "<STRING_NOVO_VALOR>"<br>
-    "Value": <INT_NOVO_VALOR><br>
+    "id": Valor<br>
+    "userDocument": "Valor"<br>
+    "creditCardToken": "Valor"<br>
+    "Value": Valor<br>
 }<br>
 
 <br>
 
 - DELETE<br>
-ENDPOINT: http://localhost:5000/delete/<INT><br>
+ENDPOINT: http://localhost:5000/delete/valor<br>
 METHOD: GET<br>
