@@ -16,36 +16,40 @@ CREATE TABLE creditCard(id INTEGER NOT NULL, userDocument VARCHAR(255) NOT NULL,
 
 Exemplos:
 <hr>
-<p>
-- CREATE
-ENDPOINT: http://localhost:5000/create
-METHOD: POST
-JSON:
-{
-    "id": <INT>
-    "userDocument": "<STRING>"
-    "creditCardToken": "<STRING>"
-    "Value": <INT>
-}
-
-- READ
-ENDPOINT: http://localhost:5000/read
-METHOD: GET
 
 
+- CREATE<br>
+ENDPOINT: http://localhost:5000/create<br>
+METHOD: POST<br>
+JSON:<br>
+{<br>
+    "id": <INT><br>
+    "userDocument": "<STRING>"<br>
+    "creditCardToken": "<STRING>"<br>
+    "Value": <INT><br>
+}<br>
 
-- UPDATE
-ENDPOINT: http://localhost:5000/update/<INT_ANTIGO>
-METHOD: POST
-JSON:
-{
-    "id": <INT_NOVO_VALOR>
-    "userDocument": "<STRING_NOVO_VALOR>"
-    "creditCardToken": "<STRING_NOVO_VALOR>"
-    "Value": <INT_NOVO_VALOR>
-}
+<br>
 
-- DELETE
-ENDPOINT: http://localhost:5000/delete/<INT>
-METHOD: GET
-</p>
+- READ<br>
+ENDPOINT: http://localhost:5000/read<br>
+METHOD: GET<br>
+
+<br>
+
+- UPDATE<br>
+ENDPOINT: http://localhost:5000/update/<INT_ANTIGO><br>
+METHOD: POST<br>
+JSON:<br>
+{<br>
+    "id": <INT_NOVO_VALOR><br>
+    "userDocument": "<STRING_NOVO_VALOR>"<br>
+    "creditCardToken": "<STRING_NOVO_VALOR>"<br>
+    "Value": <INT_NOVO_VALOR><br>
+}<br>
+
+<br>
+
+- DELETE<br>
+ENDPOINT: http://localhost:5000/delete/<INT><br>
+METHOD: GET<br>
