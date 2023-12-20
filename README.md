@@ -37,7 +37,7 @@ CREATE TABLE creditCard(
 ### GET /read
 
 <script>
-    Não é necessário nenhum JSON
+    Sem payload
 </script>
 
 ### POST /update/<int:id>
@@ -54,5 +54,5 @@ CREATE TABLE creditCard(
 ### GET /delete/<int:id>
 
 <script>
-    Não é necessário nenhum JSON
+    Sem payload
 </script>
