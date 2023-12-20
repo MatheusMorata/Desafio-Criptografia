@@ -10,7 +10,7 @@
 - VirtualEnv
 - MySQL
  
-Nome do Banco: Desafio
+Nome do Banco: Desafio<br>
 Tabela usada: 
 
 CREATE TABLE creditCard(
@@ -23,7 +23,9 @@ CREATE TABLE creditCard(
 
 ## ENDPOINTS
 
+
 ### POST /create
+
 
 <script>
     {
@@ -34,13 +36,17 @@ CREATE TABLE creditCard(
     }
 </script>
 
+
 ### GET /read
+
 
 <script>
     Sem payload
 </script>
 
+
 ### POST /update/<int:id>
+
 
 <script>
     {
@@ -51,7 +57,9 @@ CREATE TABLE creditCard(
     }
 </script>
 
+
 ### GET /delete/<int:id>
+
 
 <script>
     Sem payload
