@@ -28,12 +28,14 @@ CREATE TABLE creditCard(
 
 
 <script>
+
     {
         "id": 90,
         "userDocument": "111.111.111-22"
         "creditCardToken": "4111111111111111",
         "Value": 100000
     }
+
 </script>
 
 
@@ -41,7 +43,9 @@ CREATE TABLE creditCard(
 
 
 <script>
+
     Sem payload
+
 </script>
 
 
@@ -49,12 +53,14 @@ CREATE TABLE creditCard(
 
 
 <script>
+
     {
         "id": 90,
         "userDocument": "111.111.111-22"
         "creditCardToken": "4111111111111111",
         "Value": 100000
     }
+
 </script>
 
 
@@ -62,5 +68,7 @@ CREATE TABLE creditCard(
 
 
 <script>
+
     Sem payload
+    
 </script>
